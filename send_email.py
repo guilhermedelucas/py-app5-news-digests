@@ -6,22 +6,15 @@ load_dotenv()
 
 import os
 
-username = os.getenv("USERNAME")
+username = os.getenv("MAIL_USERNAME")
 password = os.getenv('PASSWORD')
 host = os.getenv('HOST')
 port = int(os.getenv('PORT'))
 
 
-def send_email(email, topic, message):
+def send_email(message):
     receiver = username
     context = ssl.create_default_context()
-    message = f"""\
-Subject: New email from {email}
-
-From: {email}
-Topic {topic}
-{message}
-"""
 
     with smtplib.SMTP_SSL(host, port, context=context) as server:
         server.login(username, password)
