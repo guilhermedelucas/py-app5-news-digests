@@ -7,7 +7,6 @@ load_dotenv()
 import os
 
 api_key = os.getenv("API_KEY")
-print(api_key)
 url = f"https://newsapi.org/v2/everything?q=tesla" \
       f"&from=2023-06-13&sortBy=publishedAt" \
       f"&apiKey={api_key}"

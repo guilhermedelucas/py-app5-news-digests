@@ -1,17 +1,15 @@
 import smtplib, ssl
+from dotenv import load_dotenv
 
-with open('.env', 'r') as file:
-    data = file.readlines()
-    for line in data:
-        key, info = line.strip().split('=')
-        if key == 'USERNAME':
-            username = info
-        elif key == 'PASSWORD':
-            password = info
-        elif key == 'HOST':
-            host = info
-        elif key == 'PORT':
-            port = info
+# Load environment variables from .env file
+load_dotenv()
+
+import os
+
+username = os.getenv("USERNAME")
+password = os.getenv('PASSWORD')
+host = os.getenv('HOST')
+port = int(os.getenv('PORT'))
 
 
 def send_email(email, topic, message):
