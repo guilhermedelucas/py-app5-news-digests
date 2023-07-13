@@ -12,8 +12,9 @@ host = os.getenv('HOST')
 port = int(os.getenv('PORT'))
 
 
-def send_email(message):
-    receiver = username
+def send_email(message, receiver=None):
+    if receiver is None:
+        receiver = username
     context = ssl.create_default_context()
 
     with smtplib.SMTP_SSL(host, port, context=context) as server:
